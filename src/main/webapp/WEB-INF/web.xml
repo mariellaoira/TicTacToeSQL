@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>save_service</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+   <servlet>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>com.svi.save_service.HelloServlet</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>save</servlet-name>
+    <servlet-class>com.svi.save_service.SaveServlet</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+    <servlet-name>save</servlet-name>
+    <url-pattern>/rest/save</url-pattern>
+  </servlet-mapping>  
+  
+   <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>  
+  
+   <servlet>
+    <servlet-name>Jersey Web Application</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.svi.services</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jersey.config.server.provider.classnames</param-name>
+      <param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey Web Application</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+ 
+ 
+ <!-- 
+   <servlet>
+    <servlet-name>listgames</servlet-name>
+    <servlet-class>com.svi.save_service.ListGameServlet</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+    <servlet-name>listgames</servlet-name>
+    <url-pattern>/rest/listgames</url-pattern>
+  </servlet-mapping>  
+  
+   <servlet>
+    <servlet-name>getgame</servlet-name>
+    <servlet-class>com.svi.save_service.GetGameServlet</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+    <servlet-name>getgame</servlet-name>
+    <url-pattern>/rest/getgame</url-pattern>
+  </servlet-mapping>  
+ -->
+</web-app>

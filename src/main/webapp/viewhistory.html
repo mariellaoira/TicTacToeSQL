@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome!</title>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+	<main id="infoContainer" class="containerJoin">
+		<h1 class="title">Tic-Tac-Toe</h1>
+		<h1 class="subtitle">Enter Player ID</h1>
+		<input type="text"id="txtPlayerId" class="textbox">
+		<input type="submit" value="View History" id="btnHistory" class="join" onclick="showHistory()">
+	</main>
+	<div id="historyContainer" class="containerJoin hide">
+		<div class="games-history">
+			<div id="logs" class="logs hide">
+
+			</div>
+			<div id="gameListContainer" class="game-list">
+
+			</div>
+			
+			<div id="gameBoard hide" class="game-board">
+				<div id="grid">
+					<section class="container">
+						<div class="tile" id="0"></div>
+						<div class="tile" id="1"></div>
+						<div class="tile" id="2"></div>
+						<div class="tile" id="3"></div>
+						<div class="tile" id="4"></div>
+						<div class="tile" id="5"></div>
+						<div class="tile" id="6"></div>
+						<div class="tile" id="7"></div>
+						<div class="tile" id="8"></div>
+					</section>    
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="js/viewhistory.js"></script>
+</body>
+</html>
