@@ -38,8 +38,8 @@ public class Config {
 			String driver = prop.getProperty("DRIVER");
 			ConfigObjects.setDriver(driver);
 			
-			result = "DB URL = " + dbUrl + "\n USERNAME: " + user + "\n PASSWORD: " + pass + "\n DRIVER: " + driver;
-			System.out.println(result + "\nProgram Ran on " + time + " by user = " + user + "\n " + result + "\n \n");
+		/*result = "DB URL = " + dbUrl + "\n USERNAME: " + user + "\n PASSWORD: " + pass + "\n DRIVER: " + driver;
+			System.out.println(result + "\nProgram Ran on " + time + " by user = " + user + "\n " + result + "\n \n");*/
 		
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);

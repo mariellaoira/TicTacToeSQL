@@ -2,9 +2,14 @@ package com.svi.services;
 
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
@@ -15,7 +20,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,10 +41,10 @@ public class RestService {
 	        	out_json = new JSONObject ();          
 	            JSONArray list = new JSONArray();
 	            
-	            // load game from file
+	            //Get Game IDs of a player and save it to a list
 	            List<String> games = SaveGame.getPlayerGames(playerid);
 	            
-	            // Add game id to Json array
+	            //Add each game ID to Json array
 	            for(String id : games) {
 	            	JSONObject idObject = new JSONObject();
 	            	idObject.put("id", id);
@@ -68,8 +72,13 @@ public class RestService {
 	    try {
 	       out_json = new JSONObject();
 	       JSONArray list = new JSONArray();
+	       
+	       //Get all game moves of a game ID and save it to a list
 	       List<Game> games = SaveGame.getGames(gameid);
-	            
+	       //Read log file
+	       SaveGame.readLog();
+	      
+	       //Add each game move to Json array
 	       for(Game g : games) {
 	    	   JSONObject gameObject = new JSONObject();
 	    	   gameObject.put("gameid", g.getGameId());
@@ -111,15 +120,18 @@ public class RestService {
           
         try {
             out_json = new JSONObject();
+            
             // get data from jsonData to create a GameObject
             Game game = new Game(gameID, playerID, symbol, location, dateSaved);
             Player player = new Player(playerID,gameID);
             
             player.setPlayerid(playerID);
             Player.setGameid(gameID);
-            // save game, player to file
+            
+            //save game, player to db and log file
             SaveGame.savePlayer(player);
             SaveGame.saveGame(game); 
+            SaveGame.saveLog(game);
             
         } catch(Exception e) {
         	 out_json.put("msg", "Record could not be saved (" + e + ")");
@@ -127,6 +139,7 @@ public class RestService {
         }  
         System.out.println(sb.toString());
         out_json.put("msg", "Record saved");
+        
         return Response.ok().entity(out_json.toString()).build();
     }
 }

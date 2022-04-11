@@ -7,6 +7,7 @@ var uuidRandom = Math.random().toString(36).substr(2, 8);
 var chosenPlayerId = playerRandom;
 var chosenUuid = uuidRandom;
 var getPlayerId = sessionStorage.getItem("playerId");
+
 document.addEventListener('DOMContentLoaded', function(event) {
 	console.log(getPlayerId);
     btnJoin.addEventListener("click", function() {

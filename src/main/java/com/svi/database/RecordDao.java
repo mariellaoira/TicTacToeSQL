@@ -7,11 +7,12 @@ import com.svi.data.Game;
 import com.svi.objects.Player;
 
 public interface RecordDao {
+	
 	public void deleteRecords();
 	
 	public void insertRecords(Record record);
 	
-	public void updateRecords(Record record);
+	public String updateRecords(Record record);
 
 	public List<Game> getRecords(String string);
 	
@@ -20,4 +21,8 @@ public interface RecordDao {
 	public int checkPlayer(String playerId, String gameId);
 	
 	public List<Player> getGameIds(String string);
+	
+	public void createTable();
+	
+	public void dropTable();
 }
